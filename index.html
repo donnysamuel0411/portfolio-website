@@ -25,8 +25,8 @@ button{font-family:inherit;cursor:pointer}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink);overflow-x:hidden;cursor:none}
 /* CURSOR */
-.cur{position:fixed;width:10px;height:10px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease);mix-blend-mode:multiply}
-.cur.big{width:36px;height:36px}
+.cur{position:fixed;width:10px;height:10px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease);mix-blend-mode:difference}
+.cur.big{width:34px;height:34px}
 @media(hover:none){.cur{display:none}body{cursor:auto}}
 /* GRAIN */
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:800;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px}
@@ -103,7 +103,8 @@ header.scrolled{background:rgba(244,245,255,.93);backdrop-filter:blur(18px);-web
 .hero-eyebrow::before{content:'';width:20px;height:2px;background:var(--blue);border-radius:2px;flex-shrink:0}
 .hero-name{font-family:var(--serif);font-size:clamp(2rem,5vw,4.7rem);font-weight:700;letter-spacing:-.03em;line-height:1.04;color:#fff;opacity:0;transform:translateY(26px);animation:fadeUp .9s .3s var(--ease) forwards}
 .hero-name em{font-style:italic;color:var(--blue)}
-.hero-sub{font-family:var(--serif);font-size:clamp(.88rem,1.4vw,1.25rem);font-weight:400;font-style:italic;color:rgba(255,255,255,.55);margin-top:.75rem;line-height:1.55;max-width:68ch;opacity:0;transform:translateY(14px);animation:fadeUp .9s .48s var(--ease) forwards}
+.hero-sub{font-family:var(--sans);font-size:clamp(.88rem,1.4vw,1.25rem);font-weight:400;font-style:normal;color:rgba(255,255,255,.55);margin-top:.75rem;line-height:1.55;max-width:68ch;opacity:0;transform:translateY(14px);animation:fadeUp .9s .48s var(--ease) forwards}
+.hero-sub em{font-family:var(--sans);font-style:normal;font-weight:600;color:rgba(255,255,255,.9)}
 .hero-bottom{display:none}
 .hero-tag{display:none}
 .hero-tag em{font-style:normal;font-family:var(--sans);font-weight:600;color:#fff}
@@ -772,7 +773,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeR();closeProj(
 const cur=document.getElementById('cur');
 let mx=0,my=0,cx=0,cy=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function t(){cx+=(mx-cx)*.18;cy+=(my-cy)*.18;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(t);})();
+(function t(){cx+=(mx-cx)*.85;cy+=(my-cy)*.85;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(t);})();
 document.addEventListener('mouseover',e=>{if(e.target.closest('a,button'))cur.classList.add('big');});
 document.addEventListener('mouseout',e=>{if(e.target.closest('a,button'))cur.classList.remove('big');});
 
