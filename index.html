@@ -183,63 +183,42 @@ header.scrolled{background:rgba(244,245,255,.93);backdrop-filter:blur(18px);-web
 .phot-sub{font-size:.97rem;font-weight:300;color:rgba(244,245,255,.55);line-height:1.78;max-width:54ch;margin-bottom:3rem}
 .phot-sub em{font-style:italic;color:rgba(244,245,255,.8);font-family:var(--serif)}
 
-/* Masonry-style flex layout — photos show at natural ratio, no cropping */
+/* Pinterest-style masonry — no cropping, no gaps, side by side */
 .phot-mosaic{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.75rem;
-  align-items:flex-start;
+  columns:3;
+  column-gap:.65rem;
 }
 .pm-item{
+  display:block;
+  break-inside:avoid;
+  margin-bottom:.65rem;
   border-radius:10px;
   overflow:hidden;
-  flex-shrink:0;
   line-height:0;
+  width:100%;
 }
 .pm-item img{
   display:block;
   width:100%;
   height:auto;
-  max-height:500px;
-  object-fit:scale-down;
   border-radius:10px;
 }
 
-/* Width assignments create the asymmetric rhythm */
-/* Row 1 feel — tall + wide + tall */
-.pm-a{ width:calc(28% - .4rem) }
-.pm-b{ width:calc(44% - .4rem) }
-.pm-c{ width:calc(28% - .4rem) }
 
-/* Row 2 feel — very wide + square */
-.pm-d{ width:calc(56% - .4rem) }
-.pm-e{ width:calc(44% - .4rem) }
-
-/* Row 3 feel — narrow + wide + narrower */
-.pm-f{ width:calc(22% - .4rem) }
-.pm-g{ width:calc(50% - .4rem) }
-.pm-h{ width:calc(28% - .4rem) }
-
-/* Row 4 feel — square + tall + wide */
-.pm-i{ width:calc(35% - .4rem) }
-.pm-j{ width:calc(30% - .4rem) }
-.pm-k{ width:calc(35% - .4rem) }
-
-/* Row 5 — one panoramic wide close */
-.pm-l{ width:100% }
+/* Reset all individual sizing */
+.pm-a,.pm-b,.pm-c,.pm-d,.pm-e,.pm-f,
+.pm-g,.pm-h,.pm-i,.pm-j,.pm-k,.pm-l{
+  width:auto;
+  flex-shrink:unset;
+}
 
 .phot-overlay{display:none}.phot-cap{display:none}
 
-@media(max-width:900px){
-  .pm-a,.pm-b,.pm-c,.pm-d,.pm-e,.pm-f,.pm-g,.pm-h,.pm-i,.pm-j,.pm-k{
-    width:calc(50% - .4rem)
-  }
-  .pm-l{width:100%}
+@media(max-width:700px){
+  .phot-mosaic{columns:2}
 }
-@media(max-width:600px){
-  .pm-a,.pm-b,.pm-c,.pm-d,.pm-e,.pm-f,.pm-g,.pm-h,.pm-i,.pm-j,.pm-k,.pm-l{
-    width:100%
-  }
+@media(max-width:400px){
+  .phot-mosaic{columns:1}
 }
 
 /* EXPERIENCE */
